@@ -23,7 +23,7 @@ jobs:
       - run: perl -V
       - name: Install Dependencies
         run: |
-          cpanm -iqn --skip-satisfied warnings::unused
+          cpanm -iqn --skip-satisfied warnings::unused B::Lint
       - name: Run Tests
         run: |
           perl -MO=Lint NJH/PDFPage.pm
