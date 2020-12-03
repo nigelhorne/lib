@@ -22,11 +22,14 @@ jobs:
     name: Perl ${{ matrix.perl }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      - name: Setup perl
-        uses: shogo82148/actions-setup-perl@v2
-        with:
-          perl-version: ${{ matrix.perl }}
-      - run: perl -V
+      - name: Platform check
+        run: uname -a
+      # - name: Setup perl
+        # uses: shogo82148/actions-setup-perl@v2
+        # with:
+          # perl-version: ${{ matrix.perl }}
+      - name: perl -V
+        run: perl -V
       - name: Install Dependencies
         run: |
           cpanm -iqn --skip-satisfied warnings::unused B::Lint
