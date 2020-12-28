@@ -37,3 +37,5 @@ jobs:
         run: |
           perl -MO=Lint NJH/PDFPage.pm
           perl -c -Mwarnings::unused NJH/PDFPage.pm
+          perl -MO=Lint NJH/Normalize.pm
+          perl -c -Mwarnings::unused NJH/Normalize.pm
