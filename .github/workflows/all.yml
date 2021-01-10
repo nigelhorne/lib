@@ -32,10 +32,12 @@ jobs:
         run: perl -V
       - name: Install Dependencies
         run: |
-          cpanm -iqn --skip-satisfied warnings::unused B::Lint Geo::Coder::Abbreviations
+          cpanm -iqn --skip-satisfied warnings::unused B::Lint Geo::Coder::Abbreviations Class::Simple
       - name: Run Tests
         run: |
           perl -MO=Lint NJH/PDFPage.pm
           perl -c -Mwarnings::unused NJH/PDFPage.pm
           perl -MO=Lint NJH/Normalize.pm
           perl -c -Mwarnings::unused NJH/Normalize.pm
+          perl -MO=Lint NJH/Place.pm
+          perl -c -Mwarnings::unused NJH/Place.pm
