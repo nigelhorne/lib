@@ -103,7 +103,7 @@ sub DESTROY {
 	if(my $text = $self->{'text'}) {
 		# Print the page number
 		# FIXME: not all page numbers get printed
-		$text->translate(300, $pixelsperline * 3);
+		$text->translate(300, $pixelsperline * 2);
 		my $string = '- ' . $self->{'page_number'} . ' -';
 		$text->text($string);
 		$text->textend();
