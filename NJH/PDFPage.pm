@@ -1,8 +1,12 @@
 package NJH::PDFPage;
 
+use strict;
+use warnings;
+
 # Add text to a page on a PDF document
 
 our $pixelsperline = 16;	# point size 12
+our $page_number = 1;
 
 sub new
 {
@@ -11,7 +15,7 @@ sub new
 
 	$pixelsperline = 16;
 
-	return bless { y => 750, page => $pdf->page() }, $class;
+	return bless { y => 750, page => $pdf->page(), page_number => $page_number++ }, $class;
 }
 
 sub newline
@@ -72,6 +76,13 @@ sub page
 	return $self->{'page'};
 }
 
+sub page_number
+{
+	my $self = shift;
+
+	return $self->{'page_number'};
+}
+
 sub text
 {
 	my $self = shift;
@@ -89,8 +100,13 @@ sub DESTROY {
 	}
 	my $self = shift;
 
-	if($self->{'text'}) {
-		$self->{'text'}->textend();
+	if(my $text = $self->{'text'}) {
+		# Print the page number
+		# FIXME: not all page numbers get printed
+		$text->translate(300, $pixelsperline * 3);
+		my $string = '- ' . $self->{'page_number'} . ' -';
+		$text->text($string);
+		$text->textend();
 	}
 }
 # TODO: DESTROY - add a page number
