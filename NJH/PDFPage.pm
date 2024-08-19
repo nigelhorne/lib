@@ -109,6 +109,5 @@ sub DESTROY {
 		$text->textend();
 	}
 }
-# TODO: DESTROY - add a page number
 
 1;
