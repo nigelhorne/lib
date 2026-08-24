@@ -23,7 +23,7 @@ jobs:
       - name: Platform check
         run: uname -a
       - name: Setup perl
-        uses: shogo82148/actions-setup-perl@v1.42.0
+        uses: shogo82148/actions-setup-perl@v1.43.1
         with:
           perl-version: ${{ matrix.perl }}
       - name: perl -V
